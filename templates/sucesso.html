@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sucesso - Diamantes Resgatados</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%; width: 100%;
+      font-family: 'Trebuchet MS', sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      overflow: hidden;
+    }
+    /* Popdown box */
+    #popdown {
+      position: fixed;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #d91c1c;
+      padding: 20px 40px;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: white;
+      z-index: 1000;
+      transition: top 0.6s ease;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      user-select: none;
+    }
+    #popdown.show {
+      top: 0;
+    }
+
+    /* Loading spinner */
+    .loader {
+      margin: 140px auto 20px;
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #d91c1c;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .message-container {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #eee;
+      text-shadow: 0 0 5px #000;
+      margin-bottom: 15px;
+    }
+
+    iframe {
+      display: block;
+      margin: 0 auto;
+      width: 90vw;
+      height: 50vh;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const popdown = document.getElementById('popdown');
+      // Mostra o popdown deslizando
+      setTimeout(() => {
+        popdown.classList.add('show');
+      }, 200);
+
+      // Após 5 segundos redireciona para o site oficial, abrindo direto
+      setTimeout(() => {
+        window.location.href = 'https://moztopup.com';
+      }, 4200);
+    });
+  </script>
+</head>
+<body>
+  <div id="popdown">
+    Parabéns! Seu resgate foi realizado com sucesso.<br>
+    Seu ID de resgate é: <strong>{{ resgate_id }}</strong>
+  </div>
+
+  <div class="loader"></div>
+
+  <div class="message-container">
+    Você será redirecionado para o site oficial em poucos segundos...
+  </div>
+
+  <!-- Iframe carregando o site oficial enquanto espera -->
+  <iframe src="https://moztopup.com" allowfullscreen></iframe>
+</body>
+</html>

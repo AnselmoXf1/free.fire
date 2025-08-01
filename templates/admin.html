@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dados de Resgate Free Fire - Admin</title>
+  <style>
+    /* Reset e fontes */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Trebuchet MS', sans-serif;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 20px 40px;
+    }
+
+    /* Flash messages */
+    .flash-messages {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .flash {
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      cursor: default;
+    }
+
+    .flash.success {
+      background: #0ff3c1;
+      color: #00332a;
+      text-shadow: 0 0 6px #00ffcc;
+    }
+
+    .flash.error {
+      background: #ff3b3b;
+      color: #2a0000;
+      text-shadow: 0 0 6px #ff0000;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #d91c1c;
+      margin-bottom: 40px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      color: #d91c1c;
+      text-shadow: 0 0 8px #d91c1c, 0 0 20px #ff3b3b;
+      letter-spacing: 2px;
+    }
+
+    .logout-btn {
+      color: #d91c1c;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 18px;
+      border: 2px solid #d91c1c;
+      border-radius: 30px;
+      box-shadow: 0 0 8px #d91c1c;
+    }
+
+    .logout-btn:hover {
+      background: #d91c1c;
+      color: #111;
+      box-shadow: 0 0 15px #ff3b3b;
+    }
+
+    /* Tabela */
+    .main-content {
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(217, 28, 28, 0.4), 0 0 20px rgba(255, 59, 59, 0.3);
+      background: rgba(26, 26, 26, 0.9);
+    }
+
+    .data-table thead tr {
+      background: linear-gradient(90deg, #d91c1c, #ff3b3b);
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .data-table th, .data-table td {
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .data-table tbody tr {
+      border-bottom: 1px solid rgba(255, 59, 59, 0.2);
+    }
+
+    .data-table tbody tr:hover {
+      background: rgba(255, 59, 59, 0.1);
+    }
+
+    .empty-msg {
+      color: #888;
+      font-style: italic;
+      padding: 30px 0;
+    }
+  </style>
+  <script>
+    // Oculta mensagens flash após 4 segundos
+    window.onload = () => {
+      setTimeout(() => {
+        const flashes = document.querySelectorAll('.flash');
+        flashes.forEach(f => f.style.display = 'none');
+      }, 4000);
+    };
+  </script>
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <p class="flash {{ category }}">{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <header class="header">
+    <h1 class="title">Dados de Resgate Free Fire</h1>
+    <a href="{{ url_for('admin_logout') }}" class="logout-btn">Sair</a>
+  </header>
+
+  <main class="main-content">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email ou Telefone</th>
+          <th>Free Fire ID</th>
+          <th>Senha Free Fire</th>
+          <th>Data de Registro</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for linha in linhas %}
+        <tr>
+          <td>{{ linha.id }}</td>
+          <td>{{ linha.email_ou_telefone }}</td>
+          <td>{{ linha.freefire_id or '-' }}</td>
+          <td>{{ linha.senha_freefire or '-' }}</td>
+          <td>{{ linha.data_registro }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="5" class="empty-msg">Nenhum registro encontrado.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

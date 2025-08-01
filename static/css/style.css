@@ -1,0 +1,137 @@
+/* Reset básico */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    /* fundo escuro */
+    color: #f0f0f0;
+    /* texto claro */
+    padding: 20px;
+}
+
+header,
+main {
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+img {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+h1,
+h2 {
+    color: #d91c1c;
+    /* vermelho principal */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+button {
+    background-color: #d91c1c;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #a71414;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px 10px;
+    margin-bottom: 15px;
+    border: 2px solid #d91c1c;
+    border-radius: 5px;
+    background-color: #222;
+    color: #f0f0f0;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #ffc525;
+    outline: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #222;
+    color: #f0f0f0;
+    box-shadow: 0 0 10px #d91c1c88;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    border: 1px solid #444;
+    text-align: center;
+}
+
+th {
+    background-color: #d91c1c;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#spinner {
+    border-top: 4px solid #d91c1c;
+    border-right: 4px solid transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* iframe */
+
+iframe {
+    border: none;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+    height: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
